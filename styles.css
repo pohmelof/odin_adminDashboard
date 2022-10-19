@@ -1,0 +1,326 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+}
+
+img {
+    width: 100%;
+}
+:root {
+    --light-font-color: #eeeeee;
+    --dark-font-color: rgb(48, 48, 48);
+    --background-color-light: rgb(207, 207, 207);
+    --main-color: rgb(31, 112, 187);
+    --accent-color: rgb(255, 201, 23);
+    --box-shadow-main: 2px 5px 5px rgba(0, 0, 0, 0.3);
+}
+
+.container {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 250px minmax(500px, 1fr);
+    grid-template-rows: 150px 1fr;
+}
+
+
+/* Sidebar */
+.sidebar {
+    grid-row: 1 / -1;
+    background-color:var(--main-color);
+    color: var(--light-font-color);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}
+.sidebar-link {
+    color: var(--light-font-color);
+    font-weight: bold;
+    text-decoration: none;
+    font-size: 1.1rem;
+    display: grid;
+    grid-template-columns: 40px 1fr;
+    align-items: center;
+    gap: 20px;
+    padding: 10px 0;
+}
+.sidebar-link:hover {
+    color: rgb(0, 0, 0);
+}
+.sidebar-link:hover .icon {
+    filter: invert(100%);
+}
+.home:hover {
+    text-decoration: none;
+    color: var(--light-font-color);
+}
+.icon{
+    width: 25px;
+    justify-self: center;
+}
+.icon:hover {
+    filter: opacity(0.5)
+}
+
+.logo-text {
+    font-weight: 900;
+    font-size: 1.5rem;
+    letter-spacing: 1px;
+}
+
+/* Header */
+.header {
+    grid-column: 2 / -1;
+    grid-row: 1 / 2;
+    background-color: white;
+    box-shadow: var(--box-shadow-main);
+    z-index: 10;
+    padding: 10px 30px;
+    display: grid;
+    gap: 20px;
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: 1fr 2fr;
+}
+
+.search {
+    display: grid;
+    align-items: center;
+    grid-template-columns: 30px minmax(250px, 550px);
+    gap: 30px;
+}
+.search label {
+    display: grid;
+    align-items: center;;
+}
+
+input {
+    padding: 5px 15px;
+    border: none;
+    border-radius: 20px;
+    background-color: var(--background-color-light);
+}
+input:focus {
+    outline: 2px solid var(--background-color-light);
+    background-color: white;
+}
+
+.user-info {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 20px;
+}
+.user-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+}
+.greeting {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+.large {
+    min-width: 70px;
+    min-height: 70px;
+    border-radius: 40px;
+}
+.username {
+    font-weight: 700;
+    color: var(--dark-font-color);
+}
+.greet-username {
+    color: var(--dark-font-color);
+    font-size: 1.4rem;
+    font-weight: bold;
+}
+
+.actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 30px;
+}
+
+.btn {
+    background-color: var(--main-color);
+    color: var(--light-font-color);
+    padding: 10px 30px;
+    border: none;
+    border-radius: 30px;
+    font-weight: bold;
+    transition: all 0.08s;
+}
+.btn:hover {
+    filter: opacity(0.8);
+}
+.btn:active {
+    transform: scale(0.9);
+}
+
+
+/* Main */
+
+.main {
+    background-color: var(--background-color-light);
+    min-width: 720px;
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    grid-template-rows:  50px 1fr 50px 1fr;
+    padding: 50px 20px;
+    gap: 20px;
+}
+
+@media (max-width: 1300px) {
+    .main {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 50px 1fr 50px 1fr;
+    }
+    .projects {
+        grid-column: 1/ -1;
+        grid-row: 2 /5;
+    }
+    .projects-heading {
+        grid-column: 1 / -1;
+        grid-row: 1 / 2;
+    }
+    .announcements-heading {
+        margin-top: 50px;
+        grid-row: 5 / 6;
+        grid-column: 1/ 2;
+    }
+    .trending-heading {
+        margin-top: 50px;
+        grid-row: 5 / 6;
+        grid-column: 2 / 3;
+    }
+}
+.main > h3 {
+    align-self: end;
+    font-size: 1.5rem;
+    color: var(--dark-font-color);
+}
+
+.projects {
+    grid-row: 2 / -1;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.project,
+.announcements,
+.trending {
+    background-color: var(--light-font-color);
+    box-shadow: var(--box-shadow-main);
+    border-radius: 10px;
+}
+
+.project {
+    display: grid;
+    grid-template-columns: 10px 1fr;
+    overflow: hidden;
+    gap: 10px;
+}
+.left-line {
+    background: var(--accent-color);
+}
+.content {
+    position:relative;
+    padding: 30px 10px 50px 10px;
+}
+.content > div {
+    position: absolute;
+    display: flex;
+    gap: 10px;
+    bottom: 15px;
+    right: 15px;
+}
+h4 {
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+    color: var(--dark-font-color);
+}
+p {
+    font-size: 0.9rem;
+    letter-spacing: 0.5px;
+    color: var(--dark-font-color);
+}
+
+
+.announcements {
+    display: flex;
+    gap: 20px;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 15px 20px;
+}
+.announcements > div {
+    border-bottom: 1px solid var(--background-color-light);
+    padding: 10px 0;
+}
+.announcements > div:last-child {
+    border: none;
+}
+
+.trending {
+    padding: 15px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+.trending > div {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+.trending > div :first-child {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.announcements,
+.trending {
+    max-height: 450px;
+}
+
+.mentions {
+    padding: 20px 80px;
+    position: fixed;
+    background-color: white;
+    border: 4px solid var(--main-color);
+    bottom: 20px;
+    right: 50%;
+    transform: translate(50%, 150%);
+    z-index: 100;
+    border-radius: 5px;
+    transition: all 0.3s;
+}
+.mentions a {
+    color: var(--main-color);
+}
+.mentions a:hover {
+    filter: opacity(0.7);
+}
+.show {
+    transform: translate(50%, 0);
+}
+.hide {
+    display: none;
+}
+.close {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    font-size: 1.5rem;
+    padding: 5px 8px;
+    border: none;
+    background-color: transparent;
+    color: var(--main-color);
+}
+.close:hover {
+    color: black;
+}
+
